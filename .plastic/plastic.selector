@@ -1,0 +1,4 @@
+repository "Local Coop Try Hahah@skyogdew@cloud"
+  path "/"
+    br "/main"
+    co "/main"
