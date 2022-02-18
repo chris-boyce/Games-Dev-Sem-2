@@ -7,6 +7,7 @@ public class InteractScript : MonoBehaviour
     private bool carry = false;
     private GameObject m_player;
     private Collider m_Collider;
+    private bool canDrop;
 
     private void Start()
     {
@@ -24,8 +25,12 @@ public class InteractScript : MonoBehaviour
 
     public void objectDrop()
     {
-        carry = false;
+        if (canDrop)
+        {
+            carry = false;
+        }
     }
+    
 
 
     private void Update()
@@ -45,6 +50,14 @@ public class InteractScript : MonoBehaviour
     {
         transform.Rotate(0, 90, 0);
     }
-        
+    private void OnCollisionEnter(Collision collision)
+    {
+        canDrop = false;
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        canDrop = true;
+    }
+
 
 }
