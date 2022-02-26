@@ -9,7 +9,6 @@ public class Level1Controller : MonoBehaviour
     public int LevelCount;
     public void OnLaserHit()
     {
-        Debug.Log(LevelCount);
         LevelCount++;
         if(LevelCount == 2)
         {
