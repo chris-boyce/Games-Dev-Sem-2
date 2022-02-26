@@ -160,6 +160,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd30e48be73e4ec428d562d91cd9ae46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_player: {fileID: 0}
+  m_Camera: {fileID: 0}
 --- !u!65 &4349825
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6954,7 +6956,7 @@ Transform:
   m_GameObject: {fileID: 2121597387}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.2420692, y: -15.3, z: -3.78}
-  m_LocalScale: {x: 34.696, y: 1, z: 39.818}
+  m_LocalScale: {x: 34.696, y: 1, z: 193.28853}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4

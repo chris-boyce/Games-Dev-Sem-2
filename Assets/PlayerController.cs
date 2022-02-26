@@ -6,11 +6,11 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     
-    public float speed = 2f;
+    public float speed = 100f;
     [SerializeField] private Vector2 movementInput;
     [SerializeField] private Vector2 lookInput;
-
     public Rigidbody playerRB;
+    private float topSpeed = 10f;
     [SerializeField] private float sens = 10;
     private float camRotation;
     private float lookAngleRange = 60;
@@ -34,9 +34,14 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (movementInput != Vector2.zero)
+        if (movementInput != Vector2.zero) //Applys Realtive force
         {
             playerRB.AddRelativeForce(new Vector3(movementInput.x * speed * Time.deltaTime, 0, movementInput.y * speed * Time.deltaTime), ForceMode.Impulse);
+        }
+
+        if (playerRB.velocity.magnitude > topSpeed) // Caps Top Speed
+        {
+            playerRB.velocity = playerRB.velocity.normalized * topSpeed;
         }
 
         if (lookInput != Vector2.zero) 
