@@ -8,6 +8,7 @@ public class Level1Controller : MonoBehaviour
     [SerializeField] private GameObject[] Doors;
     [SerializeField] private GameObject[] TaskComplete;
     public bool LevelFinished;
+    private bool DoorOpened;
 
     private bool CheckTask()
     {
@@ -24,11 +25,11 @@ public class Level1Controller : MonoBehaviour
     private void Update()
     {
         LevelFinished = CheckTask();
-        if(LevelFinished)
+        if(LevelFinished && DoorOpened == false)
         {
             OpenDoors();
         }
-        else
+        if (!LevelFinished && DoorOpened == true)
         {
             CloseDoor();
         }
@@ -37,6 +38,7 @@ public class Level1Controller : MonoBehaviour
     void OpenDoors()
     {
         Debug.Log("Door Open");
+        DoorOpened = true;
         for (int i = 0; i < 2; i++)
         {
             Doors[i].SetActive(false);
