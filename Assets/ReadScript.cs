@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ReadScript : MonoBehaviour
 {
@@ -10,6 +11,13 @@ public class ReadScript : MonoBehaviour
     public GameObject page;
     private bool player1Open;
     private bool player2Open;
+    private bool isOpen;
+    private float PageAnim;
+    private void Start()
+    {
+        isOpen = false;
+        page.GetComponent<Image>().fillAmount = 0;
+    }
     public void objectInteract(GameObject player , int m_PlayerID)
     {
            if (m_PlayerID == 1)
@@ -21,8 +29,37 @@ public class ReadScript : MonoBehaviour
                 page.transform.position = player2ScreenPos.position;
   
            }
-        page.SetActive(!page.activeInHierarchy);
+        
+        isOpen = !isOpen;
 
+    }
+    private void Update()
+    {
+        PageAnim = Mathf.Clamp(PageAnim, 0, 1);
+        if(isOpen)
+        {
+            if (PageAnim <= 1f) 
+            {
+                PageAnim = PageAnim + Time.deltaTime * 3;
+            }
+
+            page.GetComponent<Image>().fillAmount = PageAnim;
+            page.SetActive(true);
+
+        }
+        else
+        {
+            if (PageAnim >= 0f)
+            {
+                PageAnim = PageAnim - Time.deltaTime * 3;
+            }
+            page.GetComponent<Image>().fillAmount = PageAnim;
+            if(PageAnim < 0)
+            {
+                page.SetActive(false);
+            }
+        }
+        
     }
 
 }

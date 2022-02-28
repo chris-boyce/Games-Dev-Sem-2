@@ -8,6 +8,9 @@ TagManager:
   - Readable
   - Reflector
   - LaserEnd
+  - Wall
+  - RaycastIgnore
+  - PageUI
   layers:
   - Default
   - TransparentFX

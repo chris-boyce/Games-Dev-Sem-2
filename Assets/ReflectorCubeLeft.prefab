@@ -109,9 +109,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f69189a418345734aab5c4be43413421, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laserPos: {fileID: 639915606443759612}
-  laserBeam: {fileID: 0}
-  Hidden: {fileID: 0}
   canShoot: 0
 --- !u!1 &639915607055686069
 GameObject:
@@ -353,6 +350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd30e48be73e4ec428d562d91cd9ae46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentCube: {fileID: 639915607200723508}
 --- !u!65 &639915607573764167
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -6,23 +6,32 @@ using System;
 public class Level1Controller : MonoBehaviour
 {
     [SerializeField] private GameObject[] Doors;
-    public int LevelCount;
-    public void OnLaserHit()
+    [SerializeField] private GameObject[] TaskComplete;
+    public bool LevelFinished;
+
+    private bool CheckTask()
     {
-        LevelCount++;
-        if(LevelCount == 2)
+        for (int i = 0; i < TaskComplete.Length; i++)
+        {
+            if (TaskComplete[i].GetComponent<LaserRecieve>().finishedTask == true)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void Update()
+    {
+        LevelFinished = CheckTask();
+        if(LevelFinished)
         {
             OpenDoors();
         }
-
-    }
-    public void OnLaserNotHit()
-    {
-        if (LevelCount == 2)
+        else
         {
             CloseDoor();
         }
-        LevelCount--;
     }
 
     void OpenDoors()

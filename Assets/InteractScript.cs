@@ -11,9 +11,12 @@ public class InteractScript : MonoBehaviour
     private bool canDrop;
     private Vector3 stopPos;
     private Camera m_Camera;
-    private bool HitWall;
+    private float speed;
+    private bool rotateObject;
+    private int counter;
     private void Start()
     {
+        speed = 80f;
         gameObject.tag = "Interactable"; //Tags the tag so the player knows it is interactable and will run this script if interacted with 
         if (gameObject.GetComponent<Rigidbody>() == null) //Setting Up ridgbody to freeze roation / Adds a RB if there isnt one
         {
@@ -23,16 +26,14 @@ public class InteractScript : MonoBehaviour
         {
             m_Rigidbody = GetComponent<Rigidbody>();
         }
-        m_Rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
-
     }
 
-    public void objectInteract(GameObject player , Camera camera)
+    public void objectInteract(GameObject player, Camera camera)
     {
         m_Camera = camera;
         m_player = player;
         carry = true;
-        
+
     }
 
     public bool objectDrop() // Function is called from player if the player cant drop the item then carry stays true
@@ -48,71 +49,58 @@ public class InteractScript : MonoBehaviour
             return true;
         }
     }
-    
-    private void Update()
+
+    private void FixedUpdate()
     {
-        
-        
-            if (carry) // Carry is true it finds the players body and goes to the postision in front of it //Updated Added Raycast and now can move on all axis
-            {
-                //Transform cubeTransform = m_player.transform.Find("Player Body");
-                //transform.position = cubeTransform.position + (cubeTransform.forward * 1.5f);
 
-                Ray ray = m_Camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-            if (Physics.Raycast(ray, out m_Hit, 3))
+            if (carry)
             {
-                Debug.DrawLine(ray.origin, ray.GetPoint(3f), Color.blue, 1);
-                if (HitWall)
-                {
-                    transform.position = ray.GetPoint(1f);
-                }
-                else
-                {
-                    transform.position = ray.GetPoint(1.75f);
-                }
+                HoldCube();
+                m_Rigidbody.drag = 12;
+                m_Rigidbody.useGravity = false;
             }
             else
             {
-                Debug.DrawLine(ray.origin, ray.GetPoint(3f), Color.red, 1);
-                if (HitWall)
-                {
-                    transform.position = ray.GetPoint(1f);
-                }
-                else
-                {
-                    transform.position = ray.GetPoint(1.75f);
-                }
-            
-            }
-
-
-            }
-            else
-            {
+                m_Rigidbody.drag = 1;
                 transform.position = transform.position;
+                m_Rigidbody.useGravity = true;
             }
- 
-        
     }
+
+    void HoldCube()
+    {
+        Ray ray = m_Camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        Debug.DrawLine(ray.origin, ray.GetPoint(3f), Color.red, 1);
+        Vector3 targetPos = ray.GetPoint(1.75f);
+
+        float targetDistance = Vector3.Distance(transform.position, targetPos);
+        if (rotateObject)
+        {
+            transform.Rotate(0, 90, 0);
+            rotateObject = false;
+        }
+        else if (targetDistance > 0.1f)
+        {
+            Vector3 direction = targetPos - transform.position;
+            m_Rigidbody.AddForce(direction.normalized * speed, ForceMode.Force);
+            
+        }
+        
+    } 
 
 
     public void objectRotate()
     {
-        transform.Rotate(0, 90, 0);
+        rotateObject = true;
     }
 
     private void OnCollisionEnter(Collision collision) //If the object is colliding with anything the player cant drop it
     {
-        stopPos = transform.position;
-        Debug.Log(stopPos);
-        HitWall = true;
         canDrop = false; 
     }
     private void OnCollisionExit(Collision collision) // When the object has stoppped colliding with something it can be dropped
     {
-        HitWall = false;
         canDrop = true;
     }
-
 
 }

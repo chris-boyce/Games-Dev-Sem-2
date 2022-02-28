@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LaserOrigin : MonoBehaviour
 {
+    /*
     //[SerializeField] private Transform laserPos;
     private LineRenderer thisLR;
     private GameObject Hidden;
@@ -15,11 +16,7 @@ public class LaserOrigin : MonoBehaviour
 
     private void Awake()
     {
-        lineHolder = new GameObject();
-        thisLR = lineHolder.AddComponent<LineRenderer>();
-        laserMat = Resources.Load("LaserMaterial", typeof(Material)) as Material;
-        thisLR.material = laserMat;
-        Hidden = GameObject.Find("Hidden");
+       
 
     }
     void Update()
@@ -80,5 +77,5 @@ public class LaserOrigin : MonoBehaviour
         }
 
     }
-     
+     */
 }

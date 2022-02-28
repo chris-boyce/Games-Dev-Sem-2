@@ -5,6 +5,7 @@ using System;
 
 public class LaserEnd : MonoBehaviour
 {
+    /*
     public Level1Controller current;
     private bool canRun = true;
     public void CubeActivate()
@@ -25,5 +26,6 @@ public class LaserEnd : MonoBehaviour
 
 
     }
+    */
 
 }

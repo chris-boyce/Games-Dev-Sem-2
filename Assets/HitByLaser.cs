@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HitByLaser : MonoBehaviour
 {
+    /*
     [SerializeField] private GameObject otherReflector;
     public bool beenHit;
     
@@ -20,6 +21,7 @@ public class HitByLaser : MonoBehaviour
 
 
     }
+    */
 }
 
 

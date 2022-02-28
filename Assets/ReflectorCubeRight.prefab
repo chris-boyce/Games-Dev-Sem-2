@@ -350,6 +350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd30e48be73e4ec428d562d91cd9ae46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentCube: {fileID: 4623140516571057758}
 --- !u!65 &4623140517195801645
 BoxCollider:
   m_ObjectHideFlags: 0
