@@ -5,18 +5,38 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    
-    public float speed = 10f;
+    [Header("Input Values")]
     [SerializeField] private Vector2 movementInput;
     [SerializeField] private Vector2 lookInput;
+    [SerializeField] private float JumpValue;
+
+    [Header("Players components")]
     public Rigidbody playerRB;
-    private float topSpeed = 10f;
+    public Transform playerHead;
+    private Controls controls;
+
+    [Header("Players components")]
+    [SerializeField] private float topSpeed = 10f;
     [SerializeField] private float sens = 10;
+    [SerializeField] private float speed = 100f;
+    
     private float camRotation;
     private float lookAngleRange = 60;
-    public Transform playerHead;
-    
-    
+    private bool canJump;
+
+    private void Awake() //sets control scheme
+    {
+        controls = new Controls();
+    }
+    private void OnEnable() // When the player is enabled
+    {
+        controls.Enable(); //Control enables
+    }
+    private void OnDisable()
+    {
+        controls.Disable();
+    }
+
     public void OnMove(InputAction.CallbackContext context)
     {
         movementInput = context.ReadValue<Vector2>();
@@ -25,25 +45,30 @@ public class PlayerController : MonoBehaviour
     {
         lookInput = context.ReadValue<Vector2>();
     }
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        JumpValue = context.ReadValue<float>();
+    }
 
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        
+        Cursor.lockState = CursorLockMode.Locked; 
     }
 
     private void Update()
     {
-        if (movementInput != Vector2.zero) //Applys Realtive force
+        //Player Movement controlled by New Input System
+        // Checks the Vector of the stick or keyboard press and translates that into direction. Then adds force realitive to the direction the player is facing
+        if (movementInput != Vector2.zero) 
         {
-            playerRB.AddRelativeForce(new Vector3(movementInput.x * speed * Time.deltaTime, 0, movementInput.y * speed * Time.deltaTime), ForceMode.Impulse);
+            playerRB.AddRelativeForce(new Vector3(movementInput.x * speed * Time.deltaTime, 0, movementInput.y * speed * Time.deltaTime), ForceMode.VelocityChange);
         }
-
-        if (playerRB.velocity.magnitude > topSpeed) // Caps Top Speed
+        //Caps the players top speed so the player is more controlable
+        if (playerRB.velocity.magnitude > topSpeed) 
         {
             playerRB.velocity = playerRB.velocity.normalized * topSpeed;
         }
-
+        //Player Looking System (Uses the processors to change Sens Between different controllers)
         if (lookInput != Vector2.zero) 
         {
             playerRB.transform.Rotate(new Vector3(0, lookInput.x * sens * Time.deltaTime), Space.Self);
@@ -51,7 +76,26 @@ public class PlayerController : MonoBehaviour
             camRotation = Mathf.Clamp(camRotation, -lookAngleRange, lookAngleRange);
             playerHead.localRotation = Quaternion.Euler(-camRotation, 0, 0);
         }
-        
+        //If the player has press the jump key //Checks it is just pressed once
+        if (controls.Gameplay.JumpButton.triggered && JumpValue == 1 && canJump)
+        {
+            playerRB.AddForce(new Vector3(0, 400f, 0));
+            canJump = false;
+            playerRB.drag = 2f; //Adds Grace Period for player when in air
+        }
+ 
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log(other.gameObject.name);
+        if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Interactable"))
+        {
+            canJump = true;
+            playerRB.drag = 0.1f;
+        }
+
+    }
+
+
 
 }

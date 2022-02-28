@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/Controls.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Controls/Controls.inputactions'
 
 using System;
 using System.Collections;
@@ -46,6 +46,14 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""name"": ""Rotate"",
                     ""type"": ""Button"",
                     ""id"": ""219bd46e-8765-4bb9-aee7-5b8c9c968c35"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""JumpButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""40c9672b-0320-4f63-a93c-035f2d4bb59a"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -156,7 +164,7 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""id"": ""ec05051d-6b16-4314-ade0-77ba61bce06c"",
                     ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
-                    ""processors"": ""ScaleVector2(x=2)"",
+                    ""processors"": ""ScaleVector2(x=20)"",
                     ""groups"": ""New control scheme1"",
                     ""action"": ""LookAround"",
                     ""isComposite"": false,
@@ -181,6 +189,28 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""New control scheme"",
                     ""action"": ""Rotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1fd10414-70cc-431a-b28f-375333d39286"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""New control scheme1"",
+                    ""action"": ""JumpButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8ae2ac4d-609a-41c7-9ea1-c147e7370705"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""New control scheme"",
+                    ""action"": ""JumpButton"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -223,6 +253,7 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
         m_Gameplay_LookAround = m_Gameplay.FindAction("LookAround", throwIfNotFound: true);
         m_Gameplay_Rotate = m_Gameplay.FindAction("Rotate", throwIfNotFound: true);
+        m_Gameplay_JumpButton = m_Gameplay.FindAction("JumpButton", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -276,6 +307,7 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_Gameplay_Interact;
     private readonly InputAction m_Gameplay_LookAround;
     private readonly InputAction m_Gameplay_Rotate;
+    private readonly InputAction m_Gameplay_JumpButton;
     public struct GameplayActions
     {
         private @Controls m_Wrapper;
@@ -284,6 +316,7 @@ public class @Controls : IInputActionCollection, IDisposable
         public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
         public InputAction @LookAround => m_Wrapper.m_Gameplay_LookAround;
         public InputAction @Rotate => m_Wrapper.m_Gameplay_Rotate;
+        public InputAction @JumpButton => m_Wrapper.m_Gameplay_JumpButton;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -305,6 +338,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Rotate.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRotate;
                 @Rotate.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRotate;
                 @Rotate.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRotate;
+                @JumpButton.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJumpButton;
+                @JumpButton.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJumpButton;
+                @JumpButton.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJumpButton;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -321,6 +357,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Rotate.started += instance.OnRotate;
                 @Rotate.performed += instance.OnRotate;
                 @Rotate.canceled += instance.OnRotate;
+                @JumpButton.started += instance.OnJumpButton;
+                @JumpButton.performed += instance.OnJumpButton;
+                @JumpButton.canceled += instance.OnJumpButton;
             }
         }
     }
@@ -349,5 +388,6 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnLookAround(InputAction.CallbackContext context);
         void OnRotate(InputAction.CallbackContext context);
+        void OnJumpButton(InputAction.CallbackContext context);
     }
 }

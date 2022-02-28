@@ -11,6 +11,7 @@ TagManager:
   - Wall
   - RaycastIgnore
   - PageUI
+  - Ground
   layers:
   - Default
   - TransparentFX

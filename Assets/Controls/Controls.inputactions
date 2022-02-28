@@ -36,6 +36,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "JumpButton",
+                    "type": "Button",
+                    "id": "40c9672b-0320-4f63-a93c-035f2d4bb59a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -143,7 +151,7 @@
                     "id": "ec05051d-6b16-4314-ade0-77ba61bce06c",
                     "path": "<Mouse>/delta",
                     "interactions": "",
-                    "processors": "ScaleVector2(x=2)",
+                    "processors": "ScaleVector2(x=20)",
                     "groups": "New control scheme1",
                     "action": "LookAround",
                     "isComposite": false,
@@ -168,6 +176,28 @@
                     "processors": "",
                     "groups": "New control scheme",
                     "action": "Rotate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1fd10414-70cc-431a-b28f-375333d39286",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "New control scheme1",
+                    "action": "JumpButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8ae2ac4d-609a-41c7-9ea1-c147e7370705",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "New control scheme",
+                    "action": "JumpButton",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
