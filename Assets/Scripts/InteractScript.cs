@@ -33,7 +33,7 @@ public class InteractScript : MonoBehaviour
         m_Camera = camera;
         m_player = player;
         carry = true;
-
+        carry = true;
     }
 
     public bool objectDrop() // Function is called from player if the player cant drop the item then carry stays true
@@ -52,19 +52,18 @@ public class InteractScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-
-            if (carry)
-            {
-                HoldCube();
-                m_Rigidbody.drag = 12;
-                m_Rigidbody.useGravity = false;
-            }
-            else
-            {
-                m_Rigidbody.drag = 1;
-                transform.position = transform.position;
-                m_Rigidbody.useGravity = true;
-            }
+        if (carry)
+        {
+            HoldCube();
+            m_Rigidbody.drag = 12;
+            m_Rigidbody.useGravity = false;
+        }
+        else
+        {
+            m_Rigidbody.drag = 1;
+            transform.position = transform.position;
+            m_Rigidbody.useGravity = true;
+        }
     }
 
     void HoldCube()

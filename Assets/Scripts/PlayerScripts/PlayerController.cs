@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
         controls.Disable();
     }
 
+    //Gives Values From the input system to check 
     public void OnMove(InputAction.CallbackContext context)
     {
         movementInput = context.ReadValue<Vector2>();
@@ -50,6 +51,7 @@ public class PlayerController : MonoBehaviour
         JumpValue = context.ReadValue<float>();
     }
 
+    //Locks Mouse
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked; 
@@ -85,17 +87,14 @@ public class PlayerController : MonoBehaviour
         }
  
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) //Check if player is touching the ground
     {
-        Debug.Log(other.gameObject.name);
-        if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Interactable"))
+        if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Interactable")) //Objects that can be Jumped on
         {
             canJump = true;
             playerRB.drag = 0.1f;
         }
 
     }
-
-
 
 }

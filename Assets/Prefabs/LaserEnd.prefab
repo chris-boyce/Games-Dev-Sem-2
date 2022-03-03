@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 2043895343453619419}
   - component: {fileID: 2043895343453619418}
   - component: {fileID: 2043895343453619417}
+  - component: {fileID: 42674782}
   m_Layer: 0
   m_Name: LaserEnd
-  m_TagString: LaserEnd
+  m_TagString: Reflector
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,3 +97,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &42674782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2043895343453619423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7513a791582298d4399f12864d303927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ExitLaser: {fileID: 0}
+  isEnd: 1
+  finishedTask: 0

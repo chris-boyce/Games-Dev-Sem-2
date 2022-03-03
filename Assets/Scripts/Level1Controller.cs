@@ -5,49 +5,50 @@ using System;
 
 public class Level1Controller : MonoBehaviour
 {
+    [Header("Game Objects (Lists : Multiple May be Needed)")]
     [SerializeField] private GameObject[] Doors;
-    [SerializeField] private GameObject[] TaskComplete;
-    public bool LevelFinished;
+    [SerializeField] private GameObject[] LevelController;
+
+    //Level and Door Checks
+    private bool LevelFinished;
     private bool DoorOpened;
 
-    private bool CheckTask()
+    private bool CheckTask() //Runs Through all Level Controls and checks if they are all true
     {
-        for (int i = 0; i < TaskComplete.Length; i++)
+        for (int i = 0; i < LevelController.Length; i++)
         {
-            if (TaskComplete[i].GetComponent<LaserRecieve>().finishedTask == true)
+            if (LevelController[i].GetComponent<TaskFinished>().TaskCompleted == true)
             {
-                return true;
+                return true; //If all are returns true to the script
             }
         }
-        return false;
+        return false; 
     }
 
     private void Update()
     {
-        LevelFinished = CheckTask();
+        LevelFinished = CheckTask(); //If Level Finish returns true activate open door function
         if(LevelFinished && DoorOpened == false)
         {
             OpenDoors();
         }
-        if (!LevelFinished && DoorOpened == true)
+        if (!LevelFinished && DoorOpened == true) //Or Close the door if level not completed
         {
             CloseDoor();
         }
     }
 
-    void OpenDoors()
+    void OpenDoors() //Disable all the door in the list
     {
-        Debug.Log("Door Open");
-        DoorOpened = true;
+        DoorOpened = true; //Tells the script the door is opened
         for (int i = 0; i < 2; i++)
         {
             Doors[i].SetActive(false);
         }
 
     }
-    void CloseDoor()
+    void CloseDoor() //Closes the door if called
     {
-        Debug.Log("Close Door");
         for (int i = 0; i < 2; i++)
         {
             Doors[i].SetActive(true);

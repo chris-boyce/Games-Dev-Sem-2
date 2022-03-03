@@ -5,15 +5,24 @@ using UnityEngine.InputSystem;
 
 public class InteractWithObject : MonoBehaviour
 {
-    private float interact;
-    private float onRotate;
+    [Header("Camera and Body GOs")]
     public Camera playerCamera;
     public Transform player;
+
+    [Header("Players Assigned ID")]
+    [SerializeField] private int m_playerID;
+
+    //Components Needed by Player
     private GameObject m_Player;
     private GameObject lastObject;
-    private bool isItemBeenDropped;
-    public int m_playerID;
     private Controls controls;
+
+    //Float to measure KeyPress
+    private float interact;
+    private float onRotate;
+
+    //Checks on Obj PickedUp
+    private bool isItemBeenDropped;
     private bool itemPickup = false;
 
     private void Awake() //sets control scheme
@@ -24,7 +33,7 @@ public class InteractWithObject : MonoBehaviour
     private void OnEnable() // When the player is enabled
     {
         controls.Enable(); //Control enables
-        m_playerID = PlayerCountID.getPlayerID(); 
+        m_playerID = PlayerCountID.getPlayerID(); //Gets and sets player ID so object know what player to attach to.
         m_Player = this.gameObject;
     }
     private void OnDisable()
