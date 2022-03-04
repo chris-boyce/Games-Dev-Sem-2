@@ -164,7 +164,7 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""id"": ""ec05051d-6b16-4314-ade0-77ba61bce06c"",
                     ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
-                    ""processors"": ""ScaleVector2(x=20)"",
+                    ""processors"": ""ScaleVector2(x=10)"",
                     ""groups"": ""New control scheme1"",
                     ""action"": ""LookAround"",
                     ""isComposite"": false,

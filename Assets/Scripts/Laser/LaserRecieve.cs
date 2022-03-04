@@ -30,7 +30,9 @@ public class LaserRecieve : MonoBehaviour
         beenHit = true;
         if(isEnd == true)
         {
-            LevelController.GetComponent<TaskFinished>().TaskCompleted = true;
+            GetComponent<TaskFinished>().TaskCompleted = true;
+            GetComponent<MeshRenderer>().material = Resources.Load("GreenFin", typeof(Material)) as Material;
+
         }
     }
     public void StopBeening()

@@ -17,7 +17,8 @@ public class PlayerController : MonoBehaviour
 
     [Header("Players components")]
     [SerializeField] private float topSpeed = 10f;
-    [SerializeField] private float sens = 10;
+    [SerializeField] private float sensX = 10;
+    [SerializeField] private float sensY = 10;
     [SerializeField] private float speed = 100f;
     
     private float camRotation;
@@ -73,8 +74,9 @@ public class PlayerController : MonoBehaviour
         //Player Looking System (Uses the processors to change Sens Between different controllers)
         if (lookInput != Vector2.zero) 
         {
-            playerRB.transform.Rotate(new Vector3(0, lookInput.x * sens * Time.deltaTime), Space.Self);
-            camRotation += lookInput.y / 1.5f;
+            playerRB.transform.Rotate(new Vector3(0, lookInput.x * sensX * Time.deltaTime), Space.Self);
+            
+            camRotation += lookInput.y / sensY;
             camRotation = Mathf.Clamp(camRotation, -lookAngleRange, lookAngleRange);
             playerHead.localRotation = Quaternion.Euler(-camRotation, 0, 0);
         }

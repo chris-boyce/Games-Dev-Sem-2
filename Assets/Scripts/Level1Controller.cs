@@ -5,8 +5,9 @@ using System;
 
 public class Level1Controller : MonoBehaviour
 {
-    [Header("Game Objects (Lists : Multiple May be Needed)")]
+    [Header("Door Objects (Lists : Multiple May be Needed)")]
     [SerializeField] private GameObject[] Doors;
+    [Header("End Level Objects (Lists : Must Have TaskFinished)")]
     [SerializeField] private GameObject[] LevelController;
 
     //Level and Door Checks
@@ -17,12 +18,12 @@ public class Level1Controller : MonoBehaviour
     {
         for (int i = 0; i < LevelController.Length; i++)
         {
-            if (LevelController[i].GetComponent<TaskFinished>().TaskCompleted == true)
+            if (LevelController[i].GetComponent<TaskFinished>().TaskCompleted == false)
             {
-                return true; //If all are returns true to the script
+                return false; //If all are returns true to the script
             }
         }
-        return false; 
+        return true; 
     }
 
     private void Update()

@@ -43,7 +43,6 @@ public class PlayConnect : MonoBehaviour
 
     public void PlayerJoined()
     {
-        Debug.Log("Calling Gamemanager New Player joined");
         Connected++;
         if(Connected == 1)
         {

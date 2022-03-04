@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3476273474983872938}
   - component: {fileID: 3476273474983872934}
   - component: {fileID: 3476273474983872935}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Interactable Cube
   m_TagString: Interactable
   m_Icon: {fileID: 0}
@@ -110,7 +110,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd30e48be73e4ec428d562d91cd9ae46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentCube: {fileID: 3476273474983872937}
 --- !u!54 &3476273474983872935
 Rigidbody:
   m_ObjectHideFlags: 0

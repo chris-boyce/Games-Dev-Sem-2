@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8532394193945523142}
   - component: {fileID: 8532394193945523141}
   - component: {fileID: 2097205586727901187}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Box001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 8532394193643539743}
   - component: {fileID: 8532394193643539741}
   - component: {fileID: 8532394193643539740}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,7 +199,7 @@ GameObject:
   - component: {fileID: 8532394195609353267}
   - component: {fileID: 8532394195609353266}
   - component: {fileID: 8532394195609353269}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enter
   m_TagString: Reflector
   m_Icon: {fileID: 0}
@@ -246,6 +246,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ExitLaser: {fileID: 8532394193643539742}
+  LevelController: {fileID: 0}
+  isEnd: 0
 --- !u!1 &8838400586987001567
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,7 +257,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8206576862433283173}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Reflector4OtherOne
   m_TagString: Untagged
   m_Icon: {fileID: 0}
