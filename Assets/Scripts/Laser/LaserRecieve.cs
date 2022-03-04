@@ -11,6 +11,9 @@ public class LaserRecieve : MonoBehaviour
     [SerializeField] private GameObject LevelController;
     [SerializeField] private bool isEnd;
 
+    private GameObject LightObject;
+    private Light FinLight;
+
     private bool beenHit;
     private bool finishedTask;
 
@@ -30,8 +33,11 @@ public class LaserRecieve : MonoBehaviour
         beenHit = true;
         if(isEnd == true)
         {
+            Debug.Log("Update Me To Stop Running all the time");
             GetComponent<TaskFinished>().TaskCompleted = true;
             GetComponent<MeshRenderer>().material = Resources.Load("GreenFin", typeof(Material)) as Material;
+            FinLight = GetComponentInChildren<Light>();
+            FinLight.color = Color.green;
 
         }
     }
