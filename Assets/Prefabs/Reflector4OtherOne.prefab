@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 8532394193643539743}
   - component: {fileID: 8532394193643539741}
   - component: {fileID: 8532394193643539740}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
