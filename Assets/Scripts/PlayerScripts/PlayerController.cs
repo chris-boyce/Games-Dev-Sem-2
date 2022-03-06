@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other) //Check if player is touching the ground
     {
-        if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Interactable")) //Objects that can be Jumped on
+        if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Interactable") || other.gameObject.CompareTag("Jumpable")) //Objects that can be Jumped on
         {
             canJump = true;
             playerRB.drag = 0.1f;

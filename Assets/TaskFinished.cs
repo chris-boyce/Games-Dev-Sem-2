@@ -8,4 +8,11 @@ public class TaskFinished : MonoBehaviour
     [Header("Trigger End For Current Level Controller")]
     public bool TaskCompleted = false;
 
+
+    public void TaskCompleteTrue()
+    {
+        TaskCompleted = true;
+    }
+
+
 }

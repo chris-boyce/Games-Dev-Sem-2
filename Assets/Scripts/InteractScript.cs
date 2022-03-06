@@ -85,8 +85,11 @@ public class InteractScript : MonoBehaviour
             
         }
         
-    } 
-
+    }
+    public void CubeIsDestroyed()
+    {
+        carry = false;
+    }
 
     public void objectRotate()
     {

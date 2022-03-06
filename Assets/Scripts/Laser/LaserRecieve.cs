@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class LaserRecieve : MonoBehaviour
 {
@@ -11,21 +12,20 @@ public class LaserRecieve : MonoBehaviour
     [SerializeField] private GameObject LevelController;
     [SerializeField] private bool isEnd;
 
-    private GameObject LightObject;
-    private Light FinLight;
+    public UnityEvent LightTriggered;
+    public UnityEvent LightTriggeredStop;
 
     private bool beenHit;
-    private bool finishedTask;
 
     void FixedUpdate()
     {
         if(beenHit && !isEnd)
         {
-            ExitLaser.GetComponent<LaserFire>().FireLaser(); // Shoot Laser
+            ExitLaser.GetComponent<LaserFire>().canFire = true; // Shoot Laser
         }
         else
         {
-            ExitLaser.GetComponent<LaserFire>().StopLaser(); // Shoot Laser
+            ExitLaser.GetComponent<LaserFire>().canFire = false; // Shoot Laser
         }
     }
     public void BeenHit()
@@ -33,16 +33,21 @@ public class LaserRecieve : MonoBehaviour
         beenHit = true;
         if(isEnd == true)
         {
-            Debug.Log("Update Me To Stop Running all the time");
             GetComponent<TaskFinished>().TaskCompleted = true;
             GetComponent<MeshRenderer>().material = Resources.Load("GreenFin", typeof(Material)) as Material;
-            FinLight = GetComponentInChildren<Light>();
-            FinLight.color = Color.green;
-
+            LightTriggered.Invoke();
         }
     }
     public void StopBeening()
     {
+        Debug.Log("Yes Sir");
         beenHit = false;
+        if (isEnd == true)
+        {
+            GetComponent<TaskFinished>().TaskCompleted = false;
+            GetComponent<MeshRenderer>().material = Resources.Load("RedFin", typeof(Material)) as Material;
+            LightTriggeredStop.Invoke();
+        }
+        
     }
 }

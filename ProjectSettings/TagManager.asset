@@ -13,6 +13,10 @@ TagManager:
   - PageUI
   - Ground
   - ItemStop
+  - Player2
+  - Player1
+  - Jumpable
+  - Lever
   layers:
   - Default
   - TransparentFX

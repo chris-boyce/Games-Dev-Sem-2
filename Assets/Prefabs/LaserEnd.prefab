@@ -211,6 +211,21 @@ MonoBehaviour:
   ExitLaser: {fileID: 0}
   LevelController: {fileID: 0}
   isEnd: 1
+  LightTriggered:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4036911392909067159}
+        m_TargetAssemblyTypeName: ChangeColor, Assembly-CSharp
+        m_MethodName: TurnGreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3035759695247865815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,6 +249,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6135097638612966490}
   - component: {fileID: 8844421914493873912}
+  - component: {fileID: 4036911392909067159}
   m_Layer: 0
   m_Name: LaserLight
   m_TagString: Untagged
@@ -317,3 +333,15 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &4036911392909067159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8278598374023971691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf6974425df1e654f8e276833117695a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

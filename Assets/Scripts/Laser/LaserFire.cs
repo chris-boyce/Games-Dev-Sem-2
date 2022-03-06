@@ -4,23 +4,29 @@ using UnityEngine;
 
 public class LaserFire : MonoBehaviour
 {
-    private LineRenderer LaserRenderer;
-    private GameObject Hidden;
-    private GameObject lastObjectHit;
-    private GameObject lineHolder;
-    private Material laserMat;
-    public bool canFire;
-    public GameObject EnterLaser;
+    /// <summary>
+    /// Need To Add Reset on be hit / been hit running every frame atm
+    /// </summary>
+    [Header("If this is the Start of the Laser Beam")]
     [SerializeField] private bool MasterOrigin;
 
-    void Start()
+    //Line Renderer Making / Variables
+    private LineRenderer LaserRenderer;
+    private GameObject lineHolder;
+    private Material laserMat;
+    private GameObject Hidden;
+    public bool canFire;
+
+    //Object Hit 
+    private GameObject lastObjectHit;
+
+    void Start() //Making Linerenders When the Game Starts (Lots Needed)
     {
         canFire = false;
         lineHolder = new GameObject();
         LaserRenderer = lineHolder.AddComponent<LineRenderer>();
         laserMat = Resources.Load("LaserMaterial", typeof(Material)) as Material;
         LaserRenderer.material = laserMat;
-        canFire = false;
         Hidden = GameObject.Find("Hidden");
     }
 
@@ -67,6 +73,7 @@ public class LaserFire : MonoBehaviour
             }
         }
     }
+    /*
     public void FireLaser()
     {
         canFire = true;
@@ -75,4 +82,5 @@ public class LaserFire : MonoBehaviour
     {
         canFire = false;
     }
+    */
 }

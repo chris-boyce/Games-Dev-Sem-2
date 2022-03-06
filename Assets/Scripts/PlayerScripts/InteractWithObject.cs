@@ -14,16 +14,17 @@ public class InteractWithObject : MonoBehaviour
 
     //Components Needed by Player
     private GameObject m_Player;
-    private GameObject lastObject;
+    public GameObject lastObject;
     private Controls controls;
 
     //Float to measure KeyPress
-    private float interact;
+    public float interact;
     private float onRotate;
 
     //Checks on Obj PickedUp
     private bool isItemBeenDropped;
     private bool itemPickup = false;
+    public bool ItemCall = false;
 
     private void Awake() //sets control scheme
     {
@@ -62,8 +63,8 @@ public class InteractWithObject : MonoBehaviour
         { 
             if(itemPickup) // Itempickup = Has player got item in hand
             {
-                isItemBeenDropped = lastObject.transform.GetComponent<InteractScript>().objectDrop(); // Script runs the drop and returns if the item was dropped.
-                itemPickup = isItemBeenDropped; //If item is dropped hand is classed as empty if item not dropped the hand is classed as full.
+                DropItem();
+                
             }
             else if (Physics.Raycast(ray, out hit , 3)) //If hand is empty send raycast out
             {
@@ -79,6 +80,10 @@ public class InteractWithObject : MonoBehaviour
                 {
                     hit.transform.GetComponent<ReadScript>().objectInteract(m_Player , m_playerID);
                 }
+                else if (hit.transform.tag == "Lever") // If object is Lever it will run flip switch
+                {
+                    hit.transform.GetComponent<LeverSwitch>().FlipSwitch();
+                }
             }
 
         }
@@ -88,5 +93,23 @@ public class InteractWithObject : MonoBehaviour
         }
                   
     }
+
+    private void DropItem()
+    {
+        isItemBeenDropped = lastObject.transform.GetComponent<InteractScript>().objectDrop(); // Script runs the drop and returns if the item was dropped.
+        itemPickup = isItemBeenDropped; //If item is dropped hand is classed as empty if item not dropped the hand is classed as full.
+    }
+    public void DestroyCube()
+    {
+        DropItem();
+        lastObject = null;
+        itemPickup = false;
+    }
+
+    public GameObject CheckHand()
+    {
+        return lastObject;
+    }
+
 
 }

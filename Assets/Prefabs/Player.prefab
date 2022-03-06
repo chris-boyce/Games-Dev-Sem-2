@@ -448,7 +448,8 @@ MonoBehaviour:
   playerRB: {fileID: 696167562871641665}
   playerHead: {fileID: 2145064181603240776}
   topSpeed: 6
-  sens: 10
+  sensX: 10
+  sensY: 10
   speed: 12.5
 --- !u!65 &6130973286105290385
 BoxCollider:
@@ -475,7 +476,7 @@ GameObject:
   - component: {fileID: 2644682480283026406}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Player
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -510,3 +511,4 @@ MonoBehaviour:
   playerCamera: {fileID: 8504798764650408630}
   player: {fileID: 8504798766216526577}
   m_playerID: 0
+  ItemCall: 0

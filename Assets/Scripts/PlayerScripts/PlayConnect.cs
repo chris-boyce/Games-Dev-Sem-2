@@ -48,12 +48,15 @@ public class PlayConnect : MonoBehaviour
         {
             Players = GameObject.FindGameObjectsWithTag("Player");
             Players[0].transform.position = player1Spawn.position;
+            Players[0].transform.parent.tag = "Player1";
         }
 
         if(Connected == 2)
         {
             Players = GameObject.FindGameObjectsWithTag("Player");
             Players[1].transform.position = player2Spawn.position;
+            Players[1].transform.parent.tag = "Player2";
+
         }
 
 

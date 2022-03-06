@@ -54,6 +54,7 @@ public class Level1Controller : MonoBehaviour
         {
             Doors[i].SetActive(true);
         }
+        DoorOpened = false;
     }
 
 
