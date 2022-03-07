@@ -17,6 +17,9 @@ TagManager:
   - Player1
   - Jumpable
   - Lever
+  - Canvas
+  - Pointer
+  - Button
   layers:
   - Default
   - TransparentFX

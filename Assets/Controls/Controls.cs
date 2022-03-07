@@ -57,6 +57,14 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""ScreenShot"",
+                    ""type"": ""Button"",
+                    ""id"": ""3bf55042-03ca-4121-9477-0790b108ca28"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -153,7 +161,7 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""id"": ""cb753772-ac3a-427c-8b05-6528c20d4d82"",
                     ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
-                    ""processors"": ""ScaleVector2(x=12,y=2)"",
+                    ""processors"": ""ScaleVector2(x=12,y=12)"",
                     ""groups"": ""New control scheme"",
                     ""action"": ""LookAround"",
                     ""isComposite"": false,
@@ -164,7 +172,7 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""id"": ""ec05051d-6b16-4314-ade0-77ba61bce06c"",
                     ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
-                    ""processors"": ""ScaleVector2(x=7,y=2)"",
+                    ""processors"": ""ScaleVector2(x=4,y=4)"",
                     ""groups"": ""New control scheme1"",
                     ""action"": ""LookAround"",
                     ""isComposite"": false,
@@ -213,6 +221,96 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""action"": ""JumpButton"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""99847bea-8109-4516-9e2e-00ab4b496714"",
+                    ""path"": ""<Keyboard>/backquote"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""New control scheme1"",
+                    ""action"": ""ScreenShot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c0667453-8eea-48fa-8b48-ed29e6112a47"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""New control scheme"",
+                    ""action"": ""ScreenShot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""UI"",
+            ""id"": ""d38eac7f-7a63-4a3a-8045-f3731094c320"",
+            ""actions"": [
+                {
+                    ""name"": ""MouseMovement"",
+                    ""type"": ""Value"",
+                    ""id"": ""630e7fe1-e558-4e22-8bc5-d51781c6d340"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""MouseClick"",
+                    ""type"": ""Button"",
+                    ""id"": ""4e99eefd-d292-492b-8b7f-c21ad08ebd2c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""0a076784-d684-48b2-b626-deef16d77135"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": ""ScaleVector2(x=4,y=4)"",
+                    ""groups"": ""New control scheme"",
+                    ""action"": ""MouseMovement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""93d4a350-c739-4afc-8bb1-b7e338afa4e4"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""New control scheme1"",
+                    ""action"": ""MouseMovement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""32176e0a-656f-42bb-ba98-7bbb1312b095"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""New control scheme1"",
+                    ""action"": ""MouseClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1904c7b6-65ba-467b-ae1f-a24a41b47952"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""New control scheme"",
+                    ""action"": ""MouseClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -254,6 +352,11 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Gameplay_LookAround = m_Gameplay.FindAction("LookAround", throwIfNotFound: true);
         m_Gameplay_Rotate = m_Gameplay.FindAction("Rotate", throwIfNotFound: true);
         m_Gameplay_JumpButton = m_Gameplay.FindAction("JumpButton", throwIfNotFound: true);
+        m_Gameplay_ScreenShot = m_Gameplay.FindAction("ScreenShot", throwIfNotFound: true);
+        // UI
+        m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
+        m_UI_MouseMovement = m_UI.FindAction("MouseMovement", throwIfNotFound: true);
+        m_UI_MouseClick = m_UI.FindAction("MouseClick", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -308,6 +411,7 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_Gameplay_LookAround;
     private readonly InputAction m_Gameplay_Rotate;
     private readonly InputAction m_Gameplay_JumpButton;
+    private readonly InputAction m_Gameplay_ScreenShot;
     public struct GameplayActions
     {
         private @Controls m_Wrapper;
@@ -317,6 +421,7 @@ public class @Controls : IInputActionCollection, IDisposable
         public InputAction @LookAround => m_Wrapper.m_Gameplay_LookAround;
         public InputAction @Rotate => m_Wrapper.m_Gameplay_Rotate;
         public InputAction @JumpButton => m_Wrapper.m_Gameplay_JumpButton;
+        public InputAction @ScreenShot => m_Wrapper.m_Gameplay_ScreenShot;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -341,6 +446,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @JumpButton.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJumpButton;
                 @JumpButton.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJumpButton;
                 @JumpButton.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJumpButton;
+                @ScreenShot.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnScreenShot;
+                @ScreenShot.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnScreenShot;
+                @ScreenShot.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnScreenShot;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -360,10 +468,54 @@ public class @Controls : IInputActionCollection, IDisposable
                 @JumpButton.started += instance.OnJumpButton;
                 @JumpButton.performed += instance.OnJumpButton;
                 @JumpButton.canceled += instance.OnJumpButton;
+                @ScreenShot.started += instance.OnScreenShot;
+                @ScreenShot.performed += instance.OnScreenShot;
+                @ScreenShot.canceled += instance.OnScreenShot;
             }
         }
     }
     public GameplayActions @Gameplay => new GameplayActions(this);
+
+    // UI
+    private readonly InputActionMap m_UI;
+    private IUIActions m_UIActionsCallbackInterface;
+    private readonly InputAction m_UI_MouseMovement;
+    private readonly InputAction m_UI_MouseClick;
+    public struct UIActions
+    {
+        private @Controls m_Wrapper;
+        public UIActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @MouseMovement => m_Wrapper.m_UI_MouseMovement;
+        public InputAction @MouseClick => m_Wrapper.m_UI_MouseClick;
+        public InputActionMap Get() { return m_Wrapper.m_UI; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(UIActions set) { return set.Get(); }
+        public void SetCallbacks(IUIActions instance)
+        {
+            if (m_Wrapper.m_UIActionsCallbackInterface != null)
+            {
+                @MouseMovement.started -= m_Wrapper.m_UIActionsCallbackInterface.OnMouseMovement;
+                @MouseMovement.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnMouseMovement;
+                @MouseMovement.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnMouseMovement;
+                @MouseClick.started -= m_Wrapper.m_UIActionsCallbackInterface.OnMouseClick;
+                @MouseClick.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnMouseClick;
+                @MouseClick.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnMouseClick;
+            }
+            m_Wrapper.m_UIActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @MouseMovement.started += instance.OnMouseMovement;
+                @MouseMovement.performed += instance.OnMouseMovement;
+                @MouseMovement.canceled += instance.OnMouseMovement;
+                @MouseClick.started += instance.OnMouseClick;
+                @MouseClick.performed += instance.OnMouseClick;
+                @MouseClick.canceled += instance.OnMouseClick;
+            }
+        }
+    }
+    public UIActions @UI => new UIActions(this);
     private int m_NewcontrolschemeSchemeIndex = -1;
     public InputControlScheme NewcontrolschemeScheme
     {
@@ -389,5 +541,11 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnLookAround(InputAction.CallbackContext context);
         void OnRotate(InputAction.CallbackContext context);
         void OnJumpButton(InputAction.CallbackContext context);
+        void OnScreenShot(InputAction.CallbackContext context);
+    }
+    public interface IUIActions
+    {
+        void OnMouseMovement(InputAction.CallbackContext context);
+        void OnMouseClick(InputAction.CallbackContext context);
     }
 }

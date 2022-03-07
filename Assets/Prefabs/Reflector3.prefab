@@ -88,9 +88,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2999cfa9bc8dab54eb14e4d12cdc3f7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canFire: 0
-  EnterLaser: {fileID: 5717389583556842597}
   MasterOrigin: 0
+  canFire: 0
 --- !u!1 &5717389583556842597
 GameObject:
   m_ObjectHideFlags: 0
@@ -151,6 +150,12 @@ MonoBehaviour:
   ExitLaser: {fileID: 5717389582908422597}
   LevelController: {fileID: 0}
   isEnd: 0
+  LightTriggered:
+    m_PersistentCalls:
+      m_Calls: []
+  LightTriggeredStop:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7416318260175100919
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,7 +221,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4421777297719552703, guid: 2c82b249595610648bbc585bb73c406e, type: 3}
+  - {fileID: 2100000, guid: 9779e6d8519bdfe40b8f2a57682473a0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

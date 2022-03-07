@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Vector2 movementInput;
     [SerializeField] private Vector2 lookInput;
     [SerializeField] private float JumpValue;
+    [SerializeField] private float ScreenShotValue;
 
     [Header("Players components")]
     public Rigidbody playerRB;
@@ -20,7 +22,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float sensX = 10;
     [SerializeField] private float sensY = 10;
     [SerializeField] private float speed = 100f;
-    
+
+    public UnityEvent TakeScreenShot;
     private float camRotation;
     private float lookAngleRange = 60;
     private bool canJump;
@@ -51,6 +54,10 @@ public class PlayerController : MonoBehaviour
     {
         JumpValue = context.ReadValue<float>();
     }
+    public void OnScreenShot(InputAction.CallbackContext context)
+    {
+        ScreenShotValue = context.ReadValue<float>();
+    }
 
     //Locks Mouse
     private void Start()
@@ -75,8 +82,8 @@ public class PlayerController : MonoBehaviour
         if (lookInput != Vector2.zero) 
         {
             playerRB.transform.Rotate(new Vector3(0, lookInput.x * sensX * Time.deltaTime), Space.Self);
-            
-            camRotation += lookInput.y / sensY;
+            camRotation = camRotation + (lookInput.y * sensX * Time.deltaTime);
+            //camRotation += lookInput.y;
             camRotation = Mathf.Clamp(camRotation, -lookAngleRange, lookAngleRange);
             playerHead.localRotation = Quaternion.Euler(-camRotation, 0, 0);
         }
@@ -87,7 +94,14 @@ public class PlayerController : MonoBehaviour
             canJump = false;
             playerRB.drag = 2f; //Adds Grace Period for player when in air
         }
- 
+        if (controls.Gameplay.ScreenShot.triggered && ScreenShotValue == 1)
+        {
+            TakeScreenShot.Invoke();
+        }
+
+
+
+
     }
     private void OnTriggerEnter(Collider other) //Check if player is touching the ground
     {

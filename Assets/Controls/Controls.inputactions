@@ -44,6 +44,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "ScreenShot",
+                    "type": "Button",
+                    "id": "3bf55042-03ca-4121-9477-0790b108ca28",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -140,7 +148,7 @@
                     "id": "cb753772-ac3a-427c-8b05-6528c20d4d82",
                     "path": "<Gamepad>/rightStick",
                     "interactions": "",
-                    "processors": "ScaleVector2(x=12,y=2)",
+                    "processors": "ScaleVector2(x=12,y=12)",
                     "groups": "New control scheme",
                     "action": "LookAround",
                     "isComposite": false,
@@ -151,7 +159,7 @@
                     "id": "ec05051d-6b16-4314-ade0-77ba61bce06c",
                     "path": "<Mouse>/delta",
                     "interactions": "",
-                    "processors": "ScaleVector2(x=7,y=2)",
+                    "processors": "ScaleVector2(x=4,y=4)",
                     "groups": "New control scheme1",
                     "action": "LookAround",
                     "isComposite": false,
@@ -198,6 +206,96 @@
                     "processors": "",
                     "groups": "New control scheme",
                     "action": "JumpButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "99847bea-8109-4516-9e2e-00ab4b496714",
+                    "path": "<Keyboard>/backquote",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "New control scheme1",
+                    "action": "ScreenShot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c0667453-8eea-48fa-8b48-ed29e6112a47",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "New control scheme",
+                    "action": "ScreenShot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UI",
+            "id": "d38eac7f-7a63-4a3a-8045-f3731094c320",
+            "actions": [
+                {
+                    "name": "MouseMovement",
+                    "type": "Value",
+                    "id": "630e7fe1-e558-4e22-8bc5-d51781c6d340",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "MouseClick",
+                    "type": "Button",
+                    "id": "4e99eefd-d292-492b-8b7f-c21ad08ebd2c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0a076784-d684-48b2-b626-deef16d77135",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "ScaleVector2(x=4,y=4)",
+                    "groups": "New control scheme",
+                    "action": "MouseMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "93d4a350-c739-4afc-8bb1-b7e338afa4e4",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "New control scheme1",
+                    "action": "MouseMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "32176e0a-656f-42bb-ba98-7bbb1312b095",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "New control scheme1",
+                    "action": "MouseClick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1904c7b6-65ba-467b-ae1f-a24a41b47952",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "New control scheme",
+                    "action": "MouseClick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
