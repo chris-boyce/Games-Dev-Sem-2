@@ -30,24 +30,24 @@ public class LaserRecieve : MonoBehaviour
     }
     public void BeenHit()
     {
-        beenHit = true;
-        if(isEnd == true)
+        if(isEnd == true && beenHit == false)
         {
             GetComponent<TaskFinished>().TaskCompleted = true;
             GetComponent<MeshRenderer>().material = Resources.Load("GreenFin", typeof(Material)) as Material;
             LightTriggered.Invoke();
         }
+        beenHit = true;
     }
     public void StopBeening()
     {
-        Debug.Log("Yes Sir");
-        beenHit = false;
-        if (isEnd == true)
+        if (isEnd == true && beenHit == true)
         {
+            Debug.Log("Yes Sir");
             GetComponent<TaskFinished>().TaskCompleted = false;
             GetComponent<MeshRenderer>().material = Resources.Load("RedFin", typeof(Material)) as Material;
             LightTriggeredStop.Invoke();
         }
-        
+        beenHit = false;
+
     }
 }

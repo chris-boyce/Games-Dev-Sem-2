@@ -73,14 +73,4 @@ public class LaserFire : MonoBehaviour
             }
         }
     }
-    /*
-    public void FireLaser()
-    {
-        canFire = true;
-    }
-    public void StopLaser()
-    {
-        canFire = false;
-    }
-    */
 }
