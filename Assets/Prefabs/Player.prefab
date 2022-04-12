@@ -329,7 +329,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f2549b22fea3144e9b78b1e12483c57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderTexture: {fileID: 8400000, guid: 28261d361a67ed144a176342282e82cd, type: 2}
 --- !u!1 &8504798766174258949
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,6 +553,14 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 3bf55042-03ca-4121-9477-0790b108ca28
     m_ActionName: Gameplay/ScreenShot[/Keyboard/backquote,/DualShock4GamepadHID/dpad/up]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 630e7fe1-e558-4e22-8bc5-d51781c6d340
+    m_ActionName: UI/MouseMovement[/DualShock4GamepadHID/rightStick,/Mouse/delta]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4e99eefd-d292-492b-8b7f-c21ad08ebd2c
+    m_ActionName: UI/MouseClick[/Mouse/leftButton,/DualShock4GamepadHID/buttonEast]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
@@ -568,8 +575,8 @@ Rigidbody:
   m_GameObject: {fileID: 8504798766174258949}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0.1
-  m_AngularDrag: 0.05
+  m_Drag: 1
+  m_AngularDrag: 5
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -593,10 +600,10 @@ MonoBehaviour:
   ScreenShotValue: 0
   playerRB: {fileID: 696167562871641665}
   playerHead: {fileID: 2145064181603240776}
-  topSpeed: 6
+  topSpeed: 5
   sensX: 10
   sensY: 10
-  speed: 12.5
+  speed: 10
   TakeScreenShot:
     m_PersistentCalls:
       m_Calls:
