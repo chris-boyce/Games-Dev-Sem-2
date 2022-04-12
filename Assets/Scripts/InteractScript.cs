@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EPOOutline;
+
+
 
 public class InteractScript : MonoBehaviour
 {
@@ -14,6 +17,7 @@ public class InteractScript : MonoBehaviour
     private float speed;
     private bool rotateObject;
     private int counter;
+
     private void Start()
     {
         speed = 80f;

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using EPOOutline;
 
 public class InteractWithObject : MonoBehaviour
 {
@@ -25,6 +26,8 @@ public class InteractWithObject : MonoBehaviour
     private bool isItemBeenDropped;
     private bool itemPickup = false;
     public bool ItemCall = false;
+
+    private GameObject OutlineGO;
 
     private void Awake() //sets control scheme
     {
@@ -59,6 +62,9 @@ public class InteractWithObject : MonoBehaviour
     {
         Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0)); //Shoots ray in the middle of players screen
         RaycastHit hit;
+
+        HighlightUpdate();
+
         if (controls.Gameplay.Interact.triggered && interact == 1) // If the player is clicking interact / Sends onces
         { 
             if(itemPickup) // Itempickup = Has player got item in hand
@@ -74,7 +80,6 @@ public class InteractWithObject : MonoBehaviour
                     itemPickup = true; // Item is in hand
                     lastObject = hit.transform.gameObject; // Sets gameobject to lastobject so it can be refrenced later
                     hit.transform.GetComponent<InteractScript>().objectInteract(m_Player, playerCamera); //Get scipt and pass in what player is doing it
-
                 }
                 else if (hit.transform.tag == "Readable") // If object is reabable send in what player and the players ID
                 {
@@ -109,6 +114,28 @@ public class InteractWithObject : MonoBehaviour
     public GameObject CheckHand()
     {
         return lastObject;
+    }
+    void HighlightUpdate()
+    {
+        Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0)); //Shoots ray in the middle of players screen
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 3)) 
+        {
+            Debug.DrawRay(ray.origin, ray.direction, Color.green, 3);
+            if (hit.transform.tag == "Interactable")
+            {
+                hit.transform.GetComponent<Outlinable>().enabled = true;
+                OutlineGO = hit.transform.gameObject;
+            }
+        }
+        else
+        {
+            if(OutlineGO != null)
+            {
+                OutlineGO.GetComponent<Outlinable>().enabled = false;
+            }
+            
+        }
     }
 
 
