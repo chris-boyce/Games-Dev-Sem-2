@@ -10,11 +10,11 @@ public class TimerScript : MonoBehaviour
     {
         DontDestroyOnLoad(this.gameObject);
     }
-    void StartTimer()
+    public void StartTimer()
     {
         isTimer = true;
     }
-    void StopTimer()
+    public void StopTimer()
     {
         isTimer = false;
     }

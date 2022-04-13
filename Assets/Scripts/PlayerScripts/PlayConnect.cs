@@ -11,11 +11,15 @@ public class PlayConnect : MonoBehaviour
     [SerializeField] private GameObject player2;
     [SerializeField] private Transform player1Spawn;
     [SerializeField] private Transform player2Spawn;
+    private TimerScript ts;
     public GameObject[] Players;
     private int Connected;
-
     private bool inGame = false;
-
+    private float _fillAmmount = 1;
+    private void Start()
+    {
+        ts = GameObject.Find("Timer").GetComponent<TimerScript>();
+    }
     void Update()
     {
         if (inGame == false)
@@ -27,6 +31,7 @@ public class PlayConnect : MonoBehaviour
             else if (PlayerCountID.playerID == 2)
             {
                 player2.SetActive(true);
+
                 StartCoroutine(StartMenu());
             }
         }
@@ -34,10 +39,16 @@ public class PlayConnect : MonoBehaviour
     }
     IEnumerator StartMenu()
     {
-        yield return new WaitForSeconds(5f);
-        background.SetActive(false);
-        split.SetActive(true);
-        inGame = true;
+        yield return new WaitForSeconds(3f);
+        _fillAmmount = _fillAmmount - Time.deltaTime;
+        background.GetComponentInChildren<Image>().fillAmount = _fillAmmount;
+        if (_fillAmmount < 0)
+        {
+            background.SetActive(false);
+            split.SetActive(true);
+            inGame = true;
+            ts.StartTimer();
+        }
     }
 
 

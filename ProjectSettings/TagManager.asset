@@ -20,6 +20,7 @@ TagManager:
   - Canvas
   - Pointer
   - Button
+  - Timer
   layers:
   - Default
   - TransparentFX

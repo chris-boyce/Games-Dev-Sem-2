@@ -29,6 +29,10 @@ public class LaserFire : MonoBehaviour
         LaserRenderer.material = laserMat;
         Hidden = GameObject.Find("Hidden");
     }
+    private void OnDisable()
+    {
+        lineHolder.SetActive(false);
+    }
 
     void FixedUpdate()
     {
@@ -72,5 +76,6 @@ public class LaserFire : MonoBehaviour
                 lastObjectHit.GetComponent<LaserRecieve>().StopBeening(); //Stop the last laser firing
             }
         }
+        
     }
 }

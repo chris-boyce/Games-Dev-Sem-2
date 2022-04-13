@@ -13,6 +13,7 @@ public class Level1Controller : MonoBehaviour
     //Level and Door Checks
     private bool LevelFinished;
     private bool DoorOpened;
+    public GameObject PuzzleObjects;
 
     private bool CheckTask() //Runs Through all Level Controls and checks if they are all true
     {
@@ -32,6 +33,8 @@ public class Level1Controller : MonoBehaviour
         if(LevelFinished && DoorOpened == false)
         {
             OpenDoors();
+            StartCoroutine(DestroyAll());
+
         }
         if (!LevelFinished && DoorOpened == true) //Or Close the door if level not completed
         {
@@ -55,6 +58,11 @@ public class Level1Controller : MonoBehaviour
             Doors[i].SetActive(true);
         }
         DoorOpened = false;
+    }
+    IEnumerator DestroyAll()
+    {
+        yield return new WaitForSeconds(5f);
+        PuzzleObjects.SetActive(false);
     }
 
 
