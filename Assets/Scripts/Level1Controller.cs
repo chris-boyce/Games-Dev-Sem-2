@@ -33,7 +33,11 @@ public class Level1Controller : MonoBehaviour
         if(LevelFinished && DoorOpened == false)
         {
             OpenDoors();
-            StartCoroutine(DestroyAll());
+            if(PuzzleObjects != null)
+            {
+                StartCoroutine(DestroyAll());
+            }
+            
 
         }
         if (!LevelFinished && DoorOpened == true) //Or Close the door if level not completed
